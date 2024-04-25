@@ -1,0 +1,323 @@
+Terminales no usados en la gramática
+
+    OTHER
+
+
+Gramática
+
+    0 $accept: prog $end
+
+    1 $@1: ε
+
+    2 prog: SELECCION_MAPA SELECCION_PERSONAJES $@1 TURNOS
+
+    3 SELECCION_MAPA: MAPA
+
+    4 $@2: ε
+
+    5 $@3: ε
+
+    6 $@4: ε
+
+    7 SELECCION_PERSONAJES: PERSONAJE $@2 PERSONAJE $@3 PERSONAJE $@4 PERSONAJE
+
+    8 $@5: ε
+
+    9 TURNOS: MOVIMIENTO $@5 TURNO TURNOS
+
+   10 $@6: ε
+
+   11 TURNOS: ATAQUE $@6 TURNO TURNOS
+
+   12 $@7: ε
+
+   13 TURNOS: ATAQUE_ESPECIAL $@7 TURNO TURNOS
+   14       | FIN
+
+
+Terminales con las reglas donde aparecen
+
+    $end (0) 0
+    error (256)
+    MAPA <reservada> (258) 3
+    PERSONAJE <reservada> (259) 7
+    MOVIMIENTO <reservada> (260) 9
+    OTHER <reservada> (261)
+    ATAQUE <reservada> (262) 11
+    ATAQUE_ESPECIAL <reservada> (263) 13
+    TURNO <reservada> (264) 9 11 13
+    FIN (265) 14
+
+
+No terminales con las reglas donde aparecen
+
+    $accept (11)
+        on left: 0
+    prog (12)
+        on left: 2
+        on right: 0
+    $@1 (13)
+        on left: 1
+        on right: 2
+    SELECCION_MAPA (14)
+        on left: 3
+        on right: 2
+    SELECCION_PERSONAJES (15)
+        on left: 7
+        on right: 2
+    $@2 (16)
+        on left: 4
+        on right: 7
+    $@3 (17)
+        on left: 5
+        on right: 7
+    $@4 (18)
+        on left: 6
+        on right: 7
+    TURNOS (19)
+        on left: 9 11 13 14
+        on right: 2 9 11 13
+    $@5 (20)
+        on left: 8
+        on right: 9
+    $@6 (21)
+        on left: 10
+        on right: 11
+    $@7 (22)
+        on left: 12
+        on right: 13
+
+
+Estado 0
+
+    0 $accept: • prog $end
+
+    MAPA  desplazar e ir al estado 1
+
+    prog            ir al estado 2
+    SELECCION_MAPA  ir al estado 3
+
+
+Estado 1
+
+    3 SELECCION_MAPA: MAPA •
+
+    $default  reduce usando la regla 3 (SELECCION_MAPA)
+
+
+Estado 2
+
+    0 $accept: prog • $end
+
+    $end  desplazar e ir al estado 4
+
+
+Estado 3
+
+    2 prog: SELECCION_MAPA • SELECCION_PERSONAJES $@1 TURNOS
+
+    PERSONAJE  desplazar e ir al estado 5
+
+    SELECCION_PERSONAJES  ir al estado 6
+
+
+Estado 4
+
+    0 $accept: prog $end •
+
+    $default  aceptar
+
+
+Estado 5
+
+    7 SELECCION_PERSONAJES: PERSONAJE • $@2 PERSONAJE $@3 PERSONAJE $@4 PERSONAJE
+
+    $default  reduce usando la regla 4 ($@2)
+
+    $@2  ir al estado 7
+
+
+Estado 6
+
+    2 prog: SELECCION_MAPA SELECCION_PERSONAJES • $@1 TURNOS
+
+    $default  reduce usando la regla 1 ($@1)
+
+    $@1  ir al estado 8
+
+
+Estado 7
+
+    7 SELECCION_PERSONAJES: PERSONAJE $@2 • PERSONAJE $@3 PERSONAJE $@4 PERSONAJE
+
+    PERSONAJE  desplazar e ir al estado 9
+
+
+Estado 8
+
+    2 prog: SELECCION_MAPA SELECCION_PERSONAJES $@1 • TURNOS
+
+    MOVIMIENTO       desplazar e ir al estado 10
+    ATAQUE           desplazar e ir al estado 11
+    ATAQUE_ESPECIAL  desplazar e ir al estado 12
+    FIN              desplazar e ir al estado 13
+
+    TURNOS  ir al estado 14
+
+
+Estado 9
+
+    7 SELECCION_PERSONAJES: PERSONAJE $@2 PERSONAJE • $@3 PERSONAJE $@4 PERSONAJE
+
+    $default  reduce usando la regla 5 ($@3)
+
+    $@3  ir al estado 15
+
+
+Estado 10
+
+    9 TURNOS: MOVIMIENTO • $@5 TURNO TURNOS
+
+    $default  reduce usando la regla 8 ($@5)
+
+    $@5  ir al estado 16
+
+
+Estado 11
+
+   11 TURNOS: ATAQUE • $@6 TURNO TURNOS
+
+    $default  reduce usando la regla 10 ($@6)
+
+    $@6  ir al estado 17
+
+
+Estado 12
+
+   13 TURNOS: ATAQUE_ESPECIAL • $@7 TURNO TURNOS
+
+    $default  reduce usando la regla 12 ($@7)
+
+    $@7  ir al estado 18
+
+
+Estado 13
+
+   14 TURNOS: FIN •
+
+    $default  reduce usando la regla 14 (TURNOS)
+
+
+Estado 14
+
+    2 prog: SELECCION_MAPA SELECCION_PERSONAJES $@1 TURNOS •
+
+    $default  reduce usando la regla 2 (prog)
+
+
+Estado 15
+
+    7 SELECCION_PERSONAJES: PERSONAJE $@2 PERSONAJE $@3 • PERSONAJE $@4 PERSONAJE
+
+    PERSONAJE  desplazar e ir al estado 19
+
+
+Estado 16
+
+    9 TURNOS: MOVIMIENTO $@5 • TURNO TURNOS
+
+    TURNO  desplazar e ir al estado 20
+
+
+Estado 17
+
+   11 TURNOS: ATAQUE $@6 • TURNO TURNOS
+
+    TURNO  desplazar e ir al estado 21
+
+
+Estado 18
+
+   13 TURNOS: ATAQUE_ESPECIAL $@7 • TURNO TURNOS
+
+    TURNO  desplazar e ir al estado 22
+
+
+Estado 19
+
+    7 SELECCION_PERSONAJES: PERSONAJE $@2 PERSONAJE $@3 PERSONAJE • $@4 PERSONAJE
+
+    $default  reduce usando la regla 6 ($@4)
+
+    $@4  ir al estado 23
+
+
+Estado 20
+
+    9 TURNOS: MOVIMIENTO $@5 TURNO • TURNOS
+
+    MOVIMIENTO       desplazar e ir al estado 10
+    ATAQUE           desplazar e ir al estado 11
+    ATAQUE_ESPECIAL  desplazar e ir al estado 12
+    FIN              desplazar e ir al estado 13
+
+    TURNOS  ir al estado 24
+
+
+Estado 21
+
+   11 TURNOS: ATAQUE $@6 TURNO • TURNOS
+
+    MOVIMIENTO       desplazar e ir al estado 10
+    ATAQUE           desplazar e ir al estado 11
+    ATAQUE_ESPECIAL  desplazar e ir al estado 12
+    FIN              desplazar e ir al estado 13
+
+    TURNOS  ir al estado 25
+
+
+Estado 22
+
+   13 TURNOS: ATAQUE_ESPECIAL $@7 TURNO • TURNOS
+
+    MOVIMIENTO       desplazar e ir al estado 10
+    ATAQUE           desplazar e ir al estado 11
+    ATAQUE_ESPECIAL  desplazar e ir al estado 12
+    FIN              desplazar e ir al estado 13
+
+    TURNOS  ir al estado 26
+
+
+Estado 23
+
+    7 SELECCION_PERSONAJES: PERSONAJE $@2 PERSONAJE $@3 PERSONAJE $@4 • PERSONAJE
+
+    PERSONAJE  desplazar e ir al estado 27
+
+
+Estado 24
+
+    9 TURNOS: MOVIMIENTO $@5 TURNO TURNOS •
+
+    $default  reduce usando la regla 9 (TURNOS)
+
+
+Estado 25
+
+   11 TURNOS: ATAQUE $@6 TURNO TURNOS •
+
+    $default  reduce usando la regla 11 (TURNOS)
+
+
+Estado 26
+
+   13 TURNOS: ATAQUE_ESPECIAL $@7 TURNO TURNOS •
+
+    $default  reduce usando la regla 13 (TURNOS)
+
+
+Estado 27
+
+    7 SELECCION_PERSONAJES: PERSONAJE $@2 PERSONAJE $@3 PERSONAJE $@4 PERSONAJE •
+
+    $default  reduce usando la regla 7 (SELECCION_PERSONAJES)
